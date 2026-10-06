@@ -1,0 +1,43 @@
+# One command runs everything:  docker compose up --build
+# Site: http://localhost:8080     API docs: http://localhost:8000/docs
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: portfolio
+      POSTGRES_USER: portfolio
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-portfolio-dev-pass}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U portfolio -d portfolio"]
+      interval: 3s
+      retries: 20
+
+  backend:
+    build: ./backend
+    depends_on:
+      db: { condition: service_healthy }
+    environment:
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_NAME: portfolio
+      DB_USER: portfolio
+      DB_PASSWORD: ${DB_PASSWORD:-portfolio-dev-pass}
+      FRONTEND_URL: http://localhost:8080
+      ADMIN_TOKEN: ${ADMIN_TOKEN:-}
+      IP_HASH_SALT: ${IP_HASH_SALT:-change-this-long-random-string}
+      TRUSTED_PROXY: "true"
+    volumes:
+      - ./content:/app/content:ro
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build: ./frontend
+    depends_on: [backend]
+    ports:
+      - "8080:80"
+
+volumes:
+  pgdata:

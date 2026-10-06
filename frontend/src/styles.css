@@ -1,0 +1,150 @@
+/* Design tokens.
+   Idea: a kolam. Dots on a grid, joined by lines. The page floor is a dot grid, the 3D core is a sphere of joined dots,
+   and the AI pipeline is dots linked in sequence. Light on purpose: ice-blue paper, indigo ink, never black.
+   Turmeric is the action colour, kumkum red appears only on small moving signals, royal blue is used for the AI panel. */
+:root {
+  --bg: #e8eeff;
+  --paper: #f5f8ff;
+  --ink: #101a52;
+  --ink-2: #38437a;
+  --ink-3: #566190;
+  --accent: #2638c9;
+  --accent-soft: rgba(38, 56, 201, 0.09);
+  --accent-line: rgba(38, 56, 201, 0.22);
+  --turmeric: #ffbf1f;
+  --turmeric-hi: #ffd05a;
+  --signal: #e63946;
+  --ok: #0a7a5e;
+  --danger: #b4233a;
+  --royal: #1f2fb0;
+  --royal-2: #141d86;
+  --glass: rgba(255, 255, 255, 0.66);
+  --glass-strong: rgba(255, 255, 255, 0.92);
+  --shadow: 0 26px 60px -32px rgba(24, 36, 140, 0.5);
+  --r-lg: 36px;
+  --r-md: 20px;
+  --r-sm: 10px;
+  --f-display: 'Unbounded', 'Noto Sans Tamil', 'Segoe UI', system-ui, sans-serif;
+  --f-body: 'Manrope', 'Noto Sans Tamil', 'Segoe UI', system-ui, sans-serif;
+  --f-code: ui-monospace, 'JetBrains Mono', Menlo, Consolas, monospace;
+  --nav-h: 84px;
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 8px); -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 1rem/1.7 var(--f-body);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+/* Colour fields: a turmeric "sun" behind the 3D core, a cool blue field on the left, a hint of kumkum below. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(760px 600px at 82% 2%, rgba(255, 191, 31, 0.34), transparent 62%),
+    radial-gradient(900px 700px at -8% 42%, rgba(38, 56, 201, 0.15), transparent 62%),
+    radial-gradient(820px 620px at 68% 108%, rgba(230, 57, 70, 0.1), transparent 60%);
+  pointer-events: none;
+}
+/* The pulli: a grid of dots, the starting point of every kolam. Fades toward the edges. */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(circle at center, rgba(16, 26, 82, 0.26) 1.3px, transparent 1.8px);
+  background-size: 30px 30px;
+  -webkit-mask-image: radial-gradient(ellipse 85% 75% at 74% 22%, #000, transparent 78%);
+  mask-image: radial-gradient(ellipse 85% 75% at 74% 22%, #000, transparent 78%);
+  pointer-events: none;
+}
+::selection { background: var(--turmeric); color: var(--ink); }
+
+h1, h2, h3, h4, p { margin: 0; }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 600; letter-spacing: -0.02em; line-height: 1.14; text-wrap: balance; }
+h2 { font-size: clamp(1.7rem, 3.5vw, 2.7rem); }
+h3 { font-size: 1.12rem; }
+a { color: var(--accent); }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+
+.container { width: min(1180px, 100% - 40px); margin-inline: auto; }
+.section { padding-block: clamp(72px, 10vw, 132px); position: relative; }
+.section-head { max-width: 62ch; margin-bottom: clamp(28px, 4vw, 52px); display: grid; gap: 14px; }
+.lede { color: var(--ink-2); font-size: 1.06rem; max-width: 60ch; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.glass {
+  background: var(--glass);
+  border: 1px solid var(--accent-line);
+  border-radius: var(--r-md);
+  -webkit-backdrop-filter: blur(14px) saturate(1.3);
+  backdrop-filter: blur(14px) saturate(1.3);
+  box-shadow: var(--shadow);
+}
+
+/* Buttons: turmeric = do this. Glass = go elsewhere. */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.6em;
+  padding: 0.95em 1.55em; border-radius: 999px;
+  font: 700 0.95rem/1 var(--f-body);
+  border: 1px solid var(--accent-line); background: var(--glass-strong); color: var(--ink);
+  text-decoration: none; cursor: pointer; white-space: nowrap;
+  transition: box-shadow 0.25s, border-color 0.25s, background 0.25s;
+  will-change: transform;
+}
+.btn:hover { border-color: var(--accent); box-shadow: 0 12px 30px -12px rgba(38, 56, 201, 0.55); }
+.btn-primary { background: var(--turmeric); color: var(--ink); border-color: var(--turmeric); }
+.btn-primary:hover { background: var(--turmeric-hi); border-color: var(--turmeric-hi); box-shadow: 0 16px 36px -10px rgba(245, 168, 0, 0.85); }
+.btn .arr { display: inline-flex; transition: transform 0.25s; }
+.btn:hover .arr { transform: translateX(5px); }
+.btn:disabled, .btn[aria-disabled='true'] { opacity: 0.55; cursor: not-allowed; box-shadow: none; }
+
+.chip {
+  display: inline-flex; align-items: center; gap: 0.4em;
+  padding: 0.3em 0.85em; border-radius: 999px;
+  font-size: 0.82rem; font-weight: 700; line-height: 1.4;
+  background: var(--accent-soft); color: var(--accent); border: 1px solid transparent;
+}
+
+/* Scroll reveal (directive appReveal). Calm: small distance, one easing. */
+.rv { opacity: 0; transform: translateY(16px); transition: opacity 0.75s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms), transform 0.75s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms); }
+.rv.in { opacity: 1; transform: none; }
+
+/* 3D tilt + spotlight (directive appTilt) */
+.tilt {
+  position: relative;
+  transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.3s ease-out, box-shadow 0.3s, border-color 0.3s;
+}
+.tilt::after {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity 0.3s;
+  background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 191, 31, 0.26), transparent 46%);
+}
+.tilt:hover { border-color: var(--accent); }
+.tilt:hover::after { opacity: 1; }
+
+/* Custom cursor (only on devices with a fine pointer) */
+html.has-cursor, html.has-cursor * { cursor: none !important; }
+html.has-cursor input, html.has-cursor textarea, html.has-cursor select { cursor: text !important; }
+html.menu-open { overflow: hidden; }
+
+/* Language switch: the page fades for a moment while the text changes */
+main, footer { transition: opacity 0.18s ease, transform 0.18s ease; }
+html.lang-switching main, html.lang-switching footer { opacity: 0; transform: translateY(6px); }
+html[lang='ta'] h1, html[lang='ta'] h2, html[lang='ta'] h3 { letter-spacing: 0; line-height: 1.3; font-weight: 700; }
+html[lang='ta'] body { line-height: 1.85; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  .rv { opacity: 1; transform: none; }
+}

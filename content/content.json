@@ -1,0 +1,722 @@
+{
+  "services": [
+    {
+      "key": "fullstack",
+      "icon": "layers",
+      "title": {
+        "en": "Full-Stack Web Development",
+        "ta": "முழுத் தள (Full-Stack) வலை மேம்பாடு"
+      },
+      "description": {
+        "en": "Build complete web applications from frontend to backend.",
+        "ta": "முன்தளம் முதல் பின்தளம் வரை முழுமையான வலைச் செயலிகளை உருவாக்குகிறேன்."
+      }
+    },
+    {
+      "key": "frontend",
+      "icon": "window",
+      "title": {
+        "en": "Angular / React Development",
+        "ta": "Angular / React மேம்பாடு"
+      },
+      "description": {
+        "en": "Modern, responsive and scalable frontend applications.",
+        "ta": "நவீன, எல்லாத் திரைகளுக்கும் ஏற்ற, விரிவாக்கக்கூடிய முன்தளச் செயலிகள்."
+      }
+    },
+    {
+      "key": "backend",
+      "icon": "plug",
+      "title": {
+        "en": "Backend & API Development",
+        "ta": "பின்தளம் மற்றும் API மேம்பாடு"
+      },
+      "description": {
+        "en": "Secure REST APIs using Node.js or FastAPI.",
+        "ta": "Node.js அல்லது FastAPI கொண்டு பாதுகாப்பான REST API-கள்."
+      }
+    },
+    {
+      "key": "database",
+      "icon": "database",
+      "title": {
+        "en": "Database Development",
+        "ta": "தரவுத்தள மேம்பாடு"
+      },
+      "description": {
+        "en": "MySQL and PostgreSQL database design and integration.",
+        "ta": "MySQL, PostgreSQL தரவுத்தள வடிவமைப்பு மற்றும் ஒருங்கிணைப்பு."
+      }
+    },
+    {
+      "key": "ai",
+      "icon": "spark",
+      "title": {
+        "en": "AI-Powered Applications",
+        "ta": "AI இயக்கும் செயலிகள்"
+      },
+      "description": {
+        "en": "AI/ML integration, media processing, voice and gesture-based solutions.",
+        "ta": "AI/ML ஒருங்கிணைப்பு, மீடியா செயலாக்கம், குரல் மற்றும் சைகை அடிப்படையிலான தீர்வுகள்."
+      }
+    },
+    {
+      "key": "automation",
+      "icon": "loop",
+      "title": {
+        "en": "Business Automation",
+        "ta": "வணிகத் தானியக்கம்"
+      },
+      "description": {
+        "en": "Custom digital solutions that reduce repetitive work.",
+        "ta": "திரும்பத் திரும்ப செய்யும் வேலையைக் குறைக்கும் தனிப்பயன் டிஜிட்டல் தீர்வுகள்."
+      }
+    }
+  ],
+  "skills": [
+    {
+      "category": "frontend",
+      "name": "Angular",
+      "level": "daily",
+      "note": {
+        "en": "Web modules for PCVA and HLC-USR at TANSAM, including English and Tamil support.",
+        "ta": "TANSAM-இல் PCVA, HLC-USR வலைப் பகுதிகள்; ஆங்கிலம், தமிழ் ஆதரவு உட்பட."
+      }
+    },
+    {
+      "category": "frontend",
+      "name": "React",
+      "level": "daily",
+      "note": {
+        "en": "Frontend of the DPH-LMS learning platform.",
+        "ta": "DPH-LMS கற்றல் தளத்தின் முன்தளம்."
+      }
+    },
+    {
+      "category": "frontend",
+      "name": "React Native",
+      "level": "working",
+      "note": {
+        "en": "Offline-capable mobile interview workflows in PCVA.",
+        "ta": "PCVA-இல் இணையம் இல்லாமலும் இயங்கும் மொபைல் நேர்காணல் செயலி."
+      }
+    },
+    {
+      "category": "frontend",
+      "name": "Next.js",
+      "level": "exploring",
+      "note": {
+        "en": "Currently exploring.",
+        "ta": "தற்போது கற்று வருகிறேன்."
+      }
+    },
+    {
+      "category": "frontend",
+      "name": "TypeScript",
+      "level": "daily",
+      "note": {
+        "en": "Used across Angular, React and Node.js work.",
+        "ta": "Angular, React, Node.js பணிகள் அனைத்திலும் பயன்படுத்துகிறேன்."
+      }
+    },
+    {
+      "category": "frontend",
+      "name": "JavaScript",
+      "level": "daily",
+      "note": {
+        "en": "Everyday language for web and API work.",
+        "ta": "வலை, API பணிகளுக்கான அன்றாட மொழி."
+      }
+    },
+    {
+      "category": "frontend",
+      "name": "HTML5",
+      "level": "daily",
+      "note": {
+        "en": "Semantic, accessible markup.",
+        "ta": "பொருள் தரும், அணுகத்தக்க மார்க்அப்."
+      }
+    },
+    {
+      "category": "frontend",
+      "name": "CSS3",
+      "level": "daily",
+      "note": {
+        "en": "Responsive layouts and animation.",
+        "ta": "எல்லாத் திரைகளுக்கும் ஏற்ற வடிவமைப்பு, அசைவூட்டம்."
+      }
+    },
+    {
+      "category": "backend",
+      "name": "Node.js",
+      "level": "daily",
+      "note": {
+        "en": "REST APIs for PCVA and DPH-LMS.",
+        "ta": "PCVA, DPH-LMS-க்கான REST API-கள்."
+      }
+    },
+    {
+      "category": "backend",
+      "name": "Express.js",
+      "level": "daily",
+      "note": {
+        "en": "Routing, middleware, authentication and file uploads.",
+        "ta": "வழித்தடம், middleware, அங்கீகாரம், கோப்புப் பதிவேற்றம்."
+      }
+    },
+    {
+      "category": "backend",
+      "name": "FastAPI",
+      "level": "working",
+      "note": {
+        "en": "Backend of my AI Knowledge & ML Platform, and of this portfolio.",
+        "ta": "என் AI Knowledge & ML Platform மற்றும் இந்த போர்ட்ஃபோலியோவின் பின்தளம்."
+      }
+    },
+    {
+      "category": "backend",
+      "name": "Django",
+      "level": "exploring",
+      "note": {
+        "en": "Currently exploring.",
+        "ta": "தற்போது கற்று வருகிறேன்."
+      }
+    },
+    {
+      "category": "database",
+      "name": "MySQL",
+      "level": "daily",
+      "note": {
+        "en": "Schema design and queries for DPH-LMS.",
+        "ta": "DPH-LMS-க்கான அட்டவணை வடிவமைப்பு, வினவல்கள்."
+      }
+    },
+    {
+      "category": "database",
+      "name": "PostgreSQL",
+      "level": "daily",
+      "note": {
+        "en": "Data layer for PCVA and my AI platform.",
+        "ta": "PCVA மற்றும் என் AI தளத்தின் தரவு அடுக்கு."
+      }
+    },
+    {
+      "category": "database",
+      "name": "SQLite",
+      "level": "working",
+      "note": {
+        "en": "Offline questionnaire storage in the PCVA mobile app.",
+        "ta": "PCVA மொபைல் செயலியில் இணையமின்றி வினாத்தாள் சேமிப்பு."
+      }
+    },
+    {
+      "category": "database",
+      "name": "MongoDB",
+      "level": "exploring",
+      "note": {
+        "en": "Currently exploring.",
+        "ta": "தற்போது கற்று வருகிறேன்."
+      }
+    },
+    {
+      "category": "programming",
+      "name": "Python",
+      "level": "working",
+      "note": {
+        "en": "FastAPI services, data work and ML coursework.",
+        "ta": "FastAPI சேவைகள், தரவுப் பணி, ML பாடப்பணிகள்."
+      }
+    },
+    {
+      "category": "programming",
+      "name": "JavaScript",
+      "level": "daily",
+      "note": {
+        "en": "Browser and Node.js.",
+        "ta": "உலாவி மற்றும் Node.js."
+      }
+    },
+    {
+      "category": "programming",
+      "name": "TypeScript",
+      "level": "daily",
+      "note": {
+        "en": "Typed code for larger apps.",
+        "ta": "பெரிய செயலிகளுக்கான வகைப்படுத்திய குறியீடு."
+      }
+    },
+    {
+      "category": "programming",
+      "name": "Java",
+      "level": "exploring",
+      "note": {
+        "en": "Integrated Java-based APIs during an internship.",
+        "ta": "பயிற்சிக் காலத்தில் Java அடிப்படையிலான API-களுடன் இணைத்தேன்."
+      }
+    },
+    {
+      "category": "ai_ml",
+      "name": "Machine Learning",
+      "level": "working",
+      "note": {
+        "en": "B.Tech in Artificial Intelligence & Data Science.",
+        "ta": "செயற்கை நுண்ணறிவு மற்றும் தரவு அறிவியலில் B.Tech."
+      }
+    },
+    {
+      "category": "ai_ml",
+      "name": "Gesture Recognition",
+      "level": "working",
+      "note": {
+        "en": "Trained a CNN model for gesture classification.",
+        "ta": "சைகை வகைப்பாட்டிற்கான CNN மாதிரியைப் பயிற்றுவித்தேன்."
+      }
+    },
+    {
+      "category": "ai_ml",
+      "name": "YOLO",
+      "level": "exploring",
+      "note": {
+        "en": "Explored vehicle detection from video for a traffic-monitoring task.",
+        "ta": "போக்குவரத்துக் கண்காணிப்புப் பணிக்காக வீடியோவில் வாகனக் கண்டறிதலை ஆராய்ந்தேன்."
+      }
+    },
+    {
+      "category": "ai_ml",
+      "name": "Media Processing",
+      "level": "exploring",
+      "note": {
+        "en": "Image and video preprocessing basics.",
+        "ta": "படம், வீடியோ முன்செயலாக்க அடிப்படைகள்."
+      }
+    },
+    {
+      "category": "ai_ml",
+      "name": "Voice Recognition",
+      "level": "exploring",
+      "note": {
+        "en": "Planned for my AI platform.",
+        "ta": "என் AI தளத்தில் சேர்க்கத் திட்டமிட்டுள்ளேன்."
+      }
+    },
+    {
+      "category": "tools",
+      "name": "Git",
+      "level": "daily",
+      "note": {
+        "en": "Daily version control.",
+        "ta": "அன்றாட பதிப்புக் கட்டுப்பாடு."
+      }
+    },
+    {
+      "category": "tools",
+      "name": "GitHub",
+      "level": "daily",
+      "note": {
+        "en": "Code hosting and collaboration.",
+        "ta": "குறியீடு சேமிப்பு, கூட்டுப் பணி."
+      }
+    },
+    {
+      "category": "tools",
+      "name": "REST APIs",
+      "level": "daily",
+      "note": {
+        "en": "Designing, building and testing APIs with Postman.",
+        "ta": "Postman கொண்டு API-களை வடிவமைத்து, உருவாக்கி, சோதிக்கிறேன்."
+      }
+    },
+    {
+      "category": "tools",
+      "name": "JWT",
+      "level": "working",
+      "note": {
+        "en": "Bearer-token authentication and role-based access in DPH-LMS.",
+        "ta": "DPH-LMS-இல் bearer token அங்கீகாரம், பங்கு அடிப்படையிலான அணுகல்."
+      }
+    },
+    {
+      "category": "tools",
+      "name": "Session Authentication",
+      "level": "working",
+      "note": {
+        "en": "HTTP-only cookie sessions in my AI platform.",
+        "ta": "என் AI தளத்தில் HTTP-only cookie அமர்வுகள்."
+      }
+    },
+    {
+      "category": "tools",
+      "name": "Docker",
+      "level": "exploring",
+      "note": {
+        "en": "Currently exploring.",
+        "ta": "தற்போது கற்று வருகிறேன்."
+      }
+    }
+  ],
+  "projects": [
+    {
+      "slug": "ai-knowledge-platform",
+      "categories": [
+        "fullstack",
+        "ai"
+      ],
+      "status": "in_progress",
+      "visual": "ai",
+      "title": {
+        "en": "AI Knowledge & ML Platform",
+        "ta": "AI அறிவு மற்றும் ML தளம்"
+      },
+      "summary": {
+        "en": "A multimodal platform where people upload documents, images and video, then ask questions about them.",
+        "ta": "ஆவணங்கள், படங்கள், வீடியோக்களைப் பதிவேற்றி, அவற்றைப் பற்றி கேள்வி கேட்கும் multimodal தளம்."
+      },
+      "problem": {
+        "en": "Knowledge sits in PDFs, images and recordings, and searching across all of them is slow.",
+        "ta": "அறிவு PDF-கள், படங்கள், பதிவுகளில் சிதறிக் கிடக்கிறது; அனைத்திலும் தேடுவது மெதுவானது."
+      },
+      "solution": {
+        "en": "One place that turns uploads into searchable knowledge, with an assistant that answers from the user's own content.",
+        "ta": "பதிவேற்றங்களைத் தேடக்கூடிய அறிவாக மாற்றி, பயனரின் சொந்த உள்ளடக்கத்திலிருந்து பதிலளிக்கும் உதவியாளருடன் ஒரே இடம்."
+      },
+      "features": [
+        {
+          "en": "User registration and login",
+          "ta": "பயனர் பதிவு மற்றும் உள்நுழைவு",
+          "done": true
+        },
+        {
+          "en": "Session authentication with secure cookies",
+          "ta": "பாதுகாப்பான cookie-களுடன் அமர்வு அங்கீகாரம்",
+          "done": true
+        },
+        {
+          "en": "AI-powered chat and question answering",
+          "ta": "AI இயக்கும் உரையாடல், கேள்வி-பதில்",
+          "done": false
+        },
+        {
+          "en": "Voice recognition",
+          "ta": "குரல் அறிதல்",
+          "done": false
+        },
+        {
+          "en": "Multi-language support",
+          "ta": "பல மொழி ஆதரவு",
+          "done": false
+        },
+        {
+          "en": "Media processing",
+          "ta": "மீடியா செயலாக்கம்",
+          "done": false
+        },
+        {
+          "en": "Gesture recognition",
+          "ta": "சைகை அறிதல்",
+          "done": false
+        },
+        {
+          "en": "YOLO-based image and video processing",
+          "ta": "YOLO அடிப்படையிலான படம், வீடியோ செயலாக்கம்",
+          "done": false
+        }
+      ],
+      "stack": [
+        "Angular",
+        "FastAPI",
+        "PostgreSQL",
+        "Python",
+        "AI/ML"
+      ],
+      "github_url": "",
+      "live_url": ""
+    },
+    {
+      "slug": "pcva",
+      "categories": [
+        "fullstack",
+        "frontend",
+        "backend"
+      ],
+      "status": "client_private",
+      "visual": "sync",
+      "title": {
+        "en": "PCVA: Physician-Coded Verbal Autopsy",
+        "ta": "PCVA: வாய்மொழி மரணக் காரண ஆய்வு (Verbal Autopsy)"
+      },
+      "summary": {
+        "en": "A web and mobile platform for collecting and reviewing verbal autopsy interviews.",
+        "ta": "வாய்மொழி மரணக் காரண ஆய்வு நேர்காணல்களைச் சேகரித்து மதிப்பாய்வு செய்யும் வலை, மொபைல் தளம்."
+      },
+      "problem": {
+        "en": "Interviews happen in the field, often without a connection, and the questionnaire has to stay identical on web and mobile.",
+        "ta": "நேர்காணல்கள் களத்தில், பெரும்பாலும் இணைப்பு இன்றி நடக்கின்றன; வலையிலும் மொபைலிலும் வினாத்தாள் ஒரே மாதிரி இருக்க வேண்டும்."
+      },
+      "solution": {
+        "en": "A database-driven questionnaire. Admins edit it once on the web, and the mobile app syncs it and keeps a local copy for offline use.",
+        "ta": "தரவுத்தளத்தால் இயங்கும் வினாத்தாள். நிர்வாகி வலையில் ஒருமுறை மாற்றினால், மொபைல் செயலி அதை ஒத்திசைத்து, இணையமின்றிப் பயன்படுத்த உள்ளூர் நகலை வைத்திருக்கும்."
+      },
+      "features": [
+        {
+          "en": "Angular modules for questionnaire management, case processing, physician review, verification and reporting",
+          "ta": "வினாத்தாள் மேலாண்மை, வழக்குச் செயலாக்கம், மருத்துவர் மதிப்பாய்வு, சரிபார்ப்பு, அறிக்கைகளுக்கான Angular பகுதிகள்"
+        },
+        {
+          "en": "Node.js and Express APIs for authentication, responses, file uploads and mobile sync",
+          "ta": "அங்கீகாரம், பதில்கள், கோப்புப் பதிவேற்றம், மொபைல் ஒத்திசைவுக்கான Node.js, Express API-கள்"
+        },
+        {
+          "en": "React Native (Expo) interviews with offline SQLite storage",
+          "ta": "இணையமின்றி SQLite சேமிப்புடன் React Native (Expo) நேர்காணல் செயலி"
+        },
+        {
+          "en": "Questionnaire updates reach the mobile app without any mobile code change",
+          "ta": "மொபைல் குறியீட்டை மாற்றாமலே வினாத்தாள் மாற்றங்கள் மொபைலைச் சென்றடையும்"
+        },
+        {
+          "en": "Validation, branching logic and image/file uploads",
+          "ta": "சரிபார்ப்பு, கிளைப் பாய்வு தர்க்கம், படம்/கோப்புப் பதிவேற்றம்"
+        }
+      ],
+      "stack": [
+        "Angular",
+        "React Native",
+        "Node.js",
+        "Express",
+        "PostgreSQL",
+        "SQLite"
+      ],
+      "github_url": "",
+      "live_url": ""
+    },
+    {
+      "slug": "dph-lms",
+      "categories": [
+        "fullstack"
+      ],
+      "status": "client_private",
+      "visual": "learn",
+      "title": {
+        "en": "DPH-LMS: Learning Management System",
+        "ta": "DPH-LMS: கற்றல் மேலாண்மை அமைப்பு"
+      },
+      "summary": {
+        "en": "A learning management system built for doctors.",
+        "ta": "மருத்துவர்களுக்காக உருவாக்கிய கற்றல் மேலாண்மை அமைப்பு."
+      },
+      "problem": {
+        "en": "Training content has to reach the right people securely, and their progress has to be tracked.",
+        "ta": "பயிற்சி உள்ளடக்கம் சரியான நபர்களுக்குப் பாதுகாப்பாகச் செல்ல வேண்டும்; அவர்களின் முன்னேற்றமும் கண்காணிக்கப்பட வேண்டும்."
+      },
+      "solution": {
+        "en": "Role-based access, course progress tracking, and videos, PDFs and SCORM packages delivered through token-based access.",
+        "ta": "பங்கு அடிப்படையிலான அணுகல், பாட முன்னேற்றக் கண்காணிப்பு, token அடிப்படையிலான அணுகல் மூலம் வீடியோ, PDF, SCORM தொகுப்புகள் வழங்கல்."
+      },
+      "features": [
+        {
+          "en": "Authentication, authorization and role-based access control",
+          "ta": "அங்கீகாரம், அனுமதி, பங்கு அடிப்படையிலான அணுகல் கட்டுப்பாடு"
+        },
+        {
+          "en": "Course progress tracking",
+          "ta": "பாட முன்னேற்றக் கண்காணிப்பு"
+        },
+        {
+          "en": "Secure content management",
+          "ta": "பாதுகாப்பான உள்ளடக்க மேலாண்மை"
+        },
+        {
+          "en": "SCORM packages, videos and PDFs uploaded, processed and delivered securely",
+          "ta": "SCORM தொகுப்புகள், வீடியோக்கள், PDF-கள் பாதுகாப்பாகப் பதிவேற்றம், செயலாக்கம், வழங்கல்"
+        }
+      ],
+      "stack": [
+        "React",
+        "Node.js",
+        "MySQL"
+      ],
+      "github_url": "",
+      "live_url": ""
+    },
+    {
+      "slug": "hlc-usr",
+      "categories": [
+        "frontend"
+      ],
+      "status": "client_private",
+      "visual": "portal",
+      "title": {
+        "en": "HLC-USR: Government Portal",
+        "ta": "HLC-USR: அரசு இணையதளம்"
+      },
+      "summary": {
+        "en": "A government portal that works in English and Tamil.",
+        "ta": "ஆங்கிலம், தமிழ் இரண்டிலும் இயங்கும் அரசு இணையதளம்."
+      },
+      "problem": {
+        "en": "Users need the portal in Tamil as well as English, and translation files are tedious to keep complete by hand.",
+        "ta": "பயனர்களுக்கு ஆங்கிலத்துடன் தமிழிலும் இணையதளம் தேவை; மொழிபெயர்ப்புக் கோப்புகளைக் கையால் முழுமையாக வைத்திருப்பது சலிப்பானது."
+      },
+      "solution": {
+        "en": "Angular i18n for both languages, plus scripts that extract translation keys automatically.",
+        "ta": "இரு மொழிகளுக்கும் Angular i18n, மொழிபெயர்ப்பு விசைகளைத் தானாக எடுக்கும் ஸ்கிரிப்ட்கள்."
+      },
+      "features": [
+        {
+          "en": "Angular 21 frontend development",
+          "ta": "Angular 21 முன்தள மேம்பாடு"
+        },
+        {
+          "en": "English-to-Tamil translation with Angular i18n",
+          "ta": "Angular i18n மூலம் ஆங்கிலம்-தமிழ் மொழிபெயர்ப்பு"
+        },
+        {
+          "en": "Custom scripts for translation key extraction",
+          "ta": "மொழிபெயர்ப்பு விசைகளை எடுக்கும் தனிப்பயன் ஸ்கிரிப்ட்கள்"
+        }
+      ],
+      "stack": [
+        "Angular 21",
+        "TypeScript",
+        "i18n"
+      ],
+      "github_url": "",
+      "live_url": ""
+    },
+    {
+      "slug": "key-management-report",
+      "categories": [
+        "frontend"
+      ],
+      "status": "internship",
+      "visual": "report",
+      "title": {
+        "en": "Key Management Report System",
+        "ta": "Key Management அறிக்கை அமைப்பு"
+      },
+      "summary": {
+        "en": "An internship project: a reporting screen with live data.",
+        "ta": "பயிற்சிக் காலத் திட்டம்: நேரடித் தரவுடன் கூடிய அறிக்கைத் திரை."
+      },
+      "problem": {
+        "en": "Teams needed to find specific records quickly in a long report.",
+        "ta": "நீண்ட அறிக்கையில் குறிப்பிட்ட பதிவுகளை விரைவாகக் கண்டறிய வேண்டியிருந்தது."
+      },
+      "solution": {
+        "en": "Filtering, sorting, autocomplete and dynamic dropdowns on top of Java-based backend APIs.",
+        "ta": "Java அடிப்படையிலான பின்தள API-களின் மேல் வடிகட்டல், வரிசைப்படுத்தல், தானியங்கி பரிந்துரை, மாறும் dropdown-கள்."
+      },
+      "features": [
+        {
+          "en": "Built in Angular 18",
+          "ta": "Angular 18-இல் உருவாக்கப்பட்டது"
+        },
+        {
+          "en": "Filtering, sorting and autocomplete",
+          "ta": "வடிகட்டல், வரிசைப்படுத்தல், தானியங்கி பரிந்துரை"
+        },
+        {
+          "en": "Integrated with Java-based backend APIs",
+          "ta": "Java அடிப்படையிலான பின்தள API-களுடன் இணைக்கப்பட்டது"
+        }
+      ],
+      "stack": [
+        "Angular 18",
+        "TypeScript",
+        "REST APIs"
+      ],
+      "github_url": "",
+      "live_url": ""
+    }
+  ],
+  "experience": [
+    {
+      "key": "tansam",
+      "kind": "job",
+      "company": "TANSAM",
+      "location": "Chennai",
+      "role": {
+        "en": "Junior Full-Stack Software Developer",
+        "ta": "இளநிலை Full-Stack மென்பொருள் உருவாக்குநர்"
+      },
+      "period": {
+        "en": "Current role · 1 year 7 months",
+        "ta": "தற்போதைய பணி · 1 ஆண்டு 7 மாதங்கள்"
+      },
+      "highlights": [
+        {
+          "en": "Building frontend applications in Angular and React",
+          "ta": "Angular, React-இல் முன்தளச் செயலிகளை உருவாக்குதல்"
+        },
+        {
+          "en": "Developing backend APIs in Node.js and Express",
+          "ta": "Node.js, Express-இல் பின்தள API-களை உருவாக்குதல்"
+        },
+        {
+          "en": "Database integration with MySQL and PostgreSQL",
+          "ta": "MySQL, PostgreSQL தரவுத்தள ஒருங்கிணைப்பு"
+        },
+        {
+          "en": "Authentication and role-based access",
+          "ta": "அங்கீகாரம், பங்கு அடிப்படையிலான அணுகல்"
+        },
+        {
+          "en": "Debugging and optimization across web and mobile",
+          "ta": "வலை, மொபைல் முழுவதும் பிழை கண்டறிதல், மேம்படுத்தல்"
+        },
+        {
+          "en": "Full-stack application development",
+          "ta": "Full-Stack செயலி மேம்பாடு"
+        }
+      ]
+    },
+    {
+      "key": "photon",
+      "kind": "internship",
+      "company": "DLF Photon",
+      "location": "Chennai",
+      "role": {
+        "en": "Front-End Developer Intern",
+        "ta": "முன்தள உருவாக்குநர் பயிற்சியாளர்"
+      },
+      "period": {
+        "en": "3 months",
+        "ta": "3 மாதங்கள்"
+      },
+      "highlights": [
+        {
+          "en": "Built the Key Management Report System in Angular 18",
+          "ta": "Angular 18-இல் Key Management அறிக்கை அமைப்பை உருவாக்கினேன்"
+        },
+        {
+          "en": "Integrated Java-based backend APIs",
+          "ta": "Java அடிப்படையிலான பின்தள API-களுடன் இணைத்தேன்"
+        }
+      ]
+    },
+    {
+      "key": "hifour",
+      "kind": "internship",
+      "company": "HiFour Technologies",
+      "location": "Remote",
+      "role": {
+        "en": "Python and AI Intern",
+        "ta": "Python மற்றும் AI பயிற்சியாளர்"
+      },
+      "period": {
+        "en": "2 months",
+        "ta": "2 மாதங்கள்"
+      },
+      "highlights": [
+        {
+          "en": "Python and SQL training",
+          "ta": "Python, SQL பயிற்சி"
+        },
+        {
+          "en": "Developed a chatbot with Python",
+          "ta": "Python கொண்டு chatbot உருவாக்கினேன்"
+        }
+      ]
+    }
+  ]
+}
