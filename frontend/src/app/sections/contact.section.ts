@@ -127,7 +127,8 @@ export class ContactSection {
       },
       error: (e: { status?: number }) => {
         this.state.set('idle');
-        this.error.set(e.status === 0 ? 'err.network' : e.status === 429 ? 'err.rate' : 'err.generic');
+       const st = e.status ?? 0;
+this.error.set(st === 429 ? 'err.rate' : st === 422 || st === 400 ? 'err.generic' : 'err.network');
       },
     });
   }
