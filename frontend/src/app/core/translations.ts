@@ -203,6 +203,31 @@ const ROWS: [string, string, string][] = [
   ['footer.tag', 'Building. Learning. Creating.', 'உருவாக்குகிறேன். கற்கிறேன். படைக்கிறேன்.'],
   ['footer.rights', 'All rights reserved.', 'அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.'],
   ['footer.top', 'Back to top', 'மேலே செல்'],
+
+  // AI Chatbot
+  ['nav.ai_assistant', 'Ask AI', 'AI உதவியாளர்'],
+  ['nav.ask-ai', 'Ask AI', 'AI உதவியாளர்'],
+  ['chat.badge', 'AI Powered Assistant', 'AI இயங்கும் உதவியாளர்'],
+  ['chat.title', "Ask Anuroopa's AI Assistant", "அனுரூபாவின் AI உதவியாளரிடம் கேளுங்கள்"],
+  ['chat.sub', 'Ask anything about her projects, full-stack architecture, AI/ML background, or collaboration.', 'அவரது திட்டங்கள், தொழில்நுட்ப அடுக்கு அல்லது அனுபவம் பற்றி அறிய கீழே கேளுங்கள்.'],
+  ['chat.placeholder', 'Ask about her projects, skills, experience...', 'அவரது திட்டங்கள், திறன்கள், அனுபவம் பற்றிக் கேளுங்கள்...'],
+  ['chat.send', 'Send', 'அனுப்பு'],
+  ['chat.thinking', 'Thinking...', 'சிந்திக்கிறது...'],
+  ['chat.welcome', "Hi! I'm Anuroopa's AI assistant. Ask me anything about the projects she has done, her skills, or how you can collaborate!", "வணக்கம்! நான் அனுரூபாவின் AI உதவியாளர். அவர் உருவாக்கிய திட்டங்கள், திறன்கள் பற்றி என்னிடம் கேட்கலாம்!"],
+  ['chat.quick1', 'What projects has she done?', 'அனுரூபா என்ன திட்டங்களை உருவாக்கியுள்ளார்?'],
+  ['chat.quick2', 'Tell me about PCVA and DPH-LMS', 'PCVA மற்றும் DPH-LMS பற்றி சொல்லுங்கள்'],
+  ['chat.quick3', 'What is her tech stack?', 'அவரது தொழில்நுட்ப அடுக்கு என்ன?'],
+  ['chat.quick4', 'How can I contact her?', 'அவரை எவ்வாறு தொடர்பு கொள்வது?'],
+  ['chat.floatingToggle', "Ask AI", "AI-யிடம் கேள்"],
+  ['chat.clear', 'Clear chat', 'அரட்டையை அழி'],
+  ['chat.minimize', 'Close', 'மூடு'],
+
+  // Swipe Stack Skills
+  ['skills.swipe_hint', 'Swipe card or tap tabs to explore', 'கார்டை ஸ்வைப் செய்யவும் அல்லது திறன்களைத் தேர்ந்தெடுக்கவும்'],
+  ['skills.card_of', 'of', 'இல்'],
+  ['skills.prev', 'Previous', 'முந்தைய'],
+  ['skills.next', 'Next', 'அடுத்தது'],
+  ['skills.used_in', 'Where I used it', 'எங்கு பயன்படுத்தினேன்'],
 ];
 
 export const UI: Record<string, I18nText> = Object.fromEntries(ROWS.map(([k, en, ta]) => [k, { en, ta }]));
