@@ -34,6 +34,10 @@ class Settings(BaseSettings):
     # otherwise any client could fake its IP and dodge the rate limit.
     TRUSTED_PROXY: bool = False
 
+    # OpenAI configuration for dynamic portfolio AI assistant
+    OPENAI_API_KEY: str = ""
+    OPENAI_MODEL: str = "gpt-4o-mini"
+
     @property
     def database_url(self) -> str:
         if self.DATABASE_URL_OVERRIDE:

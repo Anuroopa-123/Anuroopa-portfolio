@@ -7,7 +7,7 @@ import { IconComponent } from '../shared/icon.component';
 import { LangToggleComponent } from '../shared/lang-toggle.component';
 import { MagneticDirective } from '../shared/interaction.directives';
 
-const LINKS = ['home', 'about', 'skills', 'services', 'projects', 'experience', 'contact'];
+const LINKS = ['home', 'about', 'skills', 'services', 'projects', 'experience', 'ask-ai', 'contact'];
 
 @Component({
   selector: 'app-navbar',

@@ -30,6 +30,8 @@ services:
       ADMIN_TOKEN: ${ADMIN_TOKEN:-}
       IP_HASH_SALT: ${IP_HASH_SALT:-change-this-long-random-string}
       TRUSTED_PROXY: "true"
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4o-mini}
     volumes:
       - ./content:/app/content:ro
     ports:

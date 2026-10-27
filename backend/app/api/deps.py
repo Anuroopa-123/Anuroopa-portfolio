@@ -10,11 +10,16 @@ from app.database.connection import get_session
 from app.repositories.content_repository import ContentRepository
 from app.repositories.message_repository import MessageRepository
 from app.services.admin_service import AdminService
+from app.services.ai_service import AIService
 from app.services.contact_service import ContactService
 from app.services.content_service import ContentService
 
 SessionDep = Annotated[Session, Depends(get_session)]
 SettingsDep = Annotated[Settings, Depends(get_settings)]
+
+
+def get_ai_service(settings: SettingsDep) -> AIService:
+    return AIService(settings)
 
 
 def get_content_service(session: SessionDep) -> ContentService:
@@ -57,4 +62,5 @@ def require_admin(
 ContentServiceDep = Annotated[ContentService, Depends(get_content_service)]
 ContactServiceDep = Annotated[ContactService, Depends(get_contact_service)]
 AdminServiceDep = Annotated[AdminService, Depends(get_admin_service)]
+AIServiceDep = Annotated[AIService, Depends(get_ai_service)]
 ClientIpDep = Annotated[str, Depends(client_ip)]

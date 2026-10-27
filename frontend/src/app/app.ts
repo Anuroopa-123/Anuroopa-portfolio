@@ -7,6 +7,7 @@ import { CursorComponent } from './layout/cursor.component';
 import { FooterComponent } from './layout/footer.component';
 import { NavbarComponent } from './layout/navbar.component';
 import { AboutSection } from './sections/about.section';
+import { AiBotSection } from './sections/ai-bot.section';
 import { AiSection } from './sections/ai.section';
 import { ContactSection } from './sections/contact.section';
 import { ExperienceSection } from './sections/experience.section';
@@ -20,14 +21,29 @@ import { WhySection } from './sections/why.section';
 @Component({
   selector: 'app-root',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CursorComponent, NavbarComponent, FooterComponent, HeroSection, AboutSection, SkillsSection, ServicesSection, ProjectsSection, AiSection, ExperienceSection, WhySection, ProcessSection, ContactSection],
+  imports: [
+    CursorComponent,
+    NavbarComponent,
+    FooterComponent,
+    HeroSection,
+    AboutSection,
+    SkillsSection,
+    ServicesSection,
+    ProjectsSection,
+    AiSection,
+    ExperienceSection,
+    WhySection,
+    ProcessSection,
+    AiBotSection,
+    ContactSection,
+  ],
   template: `
     <a class="skip sr-only" href="#about">{{ i18n.t('skip') }}</a>
     <app-cursor />
     <app-navbar />
     <main>
       <app-hero /><app-about /><app-skills /><app-services /><app-projects /><app-ai />
-      <app-experience /><app-why /><app-process /><app-contact />
+      <app-experience /><app-why /><app-process /><app-ai-bot /><app-contact />
     </main>
     <app-footer />
   `,
@@ -39,6 +55,20 @@ export class App {
   constructor() {
     inject(ContentService).load();
     const spy = inject(ScrollSpy);
-    afterNextRender(() => spy.observe(['home', 'about', 'skills', 'services', 'projects', 'ai', 'experience', 'why', 'process', 'contact']));
+    afterNextRender(() =>
+      spy.observe([
+        'home',
+        'about',
+        'skills',
+        'services',
+        'projects',
+        'ai',
+        'experience',
+        'why',
+        'process',
+        'ask-ai',
+        'contact',
+      ]),
+    );
   }
 }

@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 
 from app.api.deps import SessionDep
-from app.api.v1 import admin, contact, content
+from app.api.v1 import admin, chat, contact, content
 from app.core.config import get_settings
 
 
@@ -35,6 +35,7 @@ def create_app() -> FastAPI:
         return {"status": "ok"}
 
     app.include_router(content.router, prefix="/api/v1")
+    app.include_router(chat.router, prefix="/api/v1")
     app.include_router(contact.router, prefix="/api/v1")
     app.include_router(admin.router, prefix="/api/v1")
     return app
