@@ -141,6 +141,12 @@ const ROWS: [string, string, string][] = [
   ['exp.title', "Where I've worked", 'நான் பணியாற்றிய இடங்கள்'],
   ['exp.job', 'Job', 'பணி'],
   ['exp.internship', 'Internship', 'பயிற்சி'],
+  ['exp.badge', 'Career Journey', 'தொழில்முறைப் பயணம்'],
+  ['exp.sub', 'Professional software engineering roles, enterprise impact, and technical milestones.', 'நிறுவனங்களில் நான் ஆற்றிய பணிகள், திட்ட பங்களிப்புகள் மற்றும் தொழில்நுட்ப மைல்கற்கள்.'],
+  ['exp.present', 'Present', 'தற்போது'],
+  ['exp.active_role', 'Active Current Role', 'தற்போதைய நேரடி பணி'],
+  ['exp.highlights_title', 'Key Responsibilities & Impact', 'முக்கிய பொறுப்புகள் & தாக்கம்'],
+  ['exp.filter_all', 'All Milestones', 'அனைத்து மைல்கற்கள்'],
 
   // Why
   ['why.title', 'Why work with me?', 'ஏன் என்னுடன் பணியாற்ற வேண்டும்?'],
