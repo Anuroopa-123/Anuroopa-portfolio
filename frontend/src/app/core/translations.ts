@@ -128,16 +128,25 @@ const ROWS: [string, string, string][] = [
 
   // Why
   ['why.title', 'Why work with me?', 'ஏன் என்னுடன் பணியாற்ற வேண்டும்?'],
+  ['why.sub', 'Five core principles that guide how I design, develop, and deliver software.', 'நம்பகமான, உயர்தர மென்பொருளை நான் எவ்வாறு உருவாக்குகிறேன் என்பதற்கான 5 அடிப்படைக் கொள்கைகள்.'],
+  ['why.swipe_hint', 'Drag or swipe card to explore', 'கார்டை ஸ்வைப் செய்யவும் அல்லது தட்டவும்'],
+  ['why.prev', 'Previous', 'முந்தைய'],
+  ['why.next', 'Next', 'அடுத்தது'],
   ['why.1.t', 'Full-stack thinking', 'முழுமையான Full-Stack சிந்தனை'],
   ['why.1.d', 'I understand the complete journey from UI to API to database.', 'UI முதல் API வழியாக தரவுத்தளம் வரை முழுப் பயணத்தையும் நான் புரிந்துகொள்கிறேன்.'],
+  ['why.1.tag', 'UI • REST APIs • Databases', 'UI • REST API-கள் • தரவுத்தளம்'],
   ['why.2.t', 'AI + software development', 'AI + மென்பொருள் மேம்பாடு'],
   ['why.2.d', 'I combine software engineering with my background in AI & Data Science.', 'மென்பொருள் பொறியியலை என் AI மற்றும் தரவு அறிவியல் பின்னணியுடன் இணைக்கிறேன்.'],
+  ['why.2.tag', 'B.Tech AI & Data Science • ML • Vision', 'B.Tech AI & தரவு அறிவியல் • ML • Vision'],
   ['why.3.t', 'Problem solver', 'சிக்கல் தீர்ப்பவர்'],
   ['why.3.d', 'I focus on solving the actual business problem, not just writing code.', 'குறியீடு எழுதுவதோடு நிற்காமல், உண்மையான வணிகச் சிக்கலைத் தீர்ப்பதில் கவனம் செலுத்துகிறேன்.'],
+  ['why.3.tag', 'Pragmatic • Business Impact • User-first', 'நடைமுறைத் தீர்வு • வணிகப் பயன் • பயனர் முன்னுரிமை'],
   ['why.4.t', 'Continuous learning', 'தொடர் கற்றல்'],
   ['why.4.d', 'I continuously improve my skills and explore modern technologies.', 'என் திறன்களைத் தொடர்ந்து மேம்படுத்தி, நவீன தொழில்நுட்பங்களை ஆராய்கிறேன்.'],
+  ['why.4.tag', 'Next.js • Docker • Cloud APIs • Fast Learner', 'Next.js • Docker • Cloud API-கள் • விரைவுக் கற்றல்'],
   ['why.5.t', 'Clean & scalable development', 'தூய்மையான, விரிவாக்கக்கூடிய மேம்பாடு'],
   ['why.5.d', 'I aim to build maintainable and scalable applications.', 'பராமரிக்கவும் விரிவாக்கவும் எளிதான செயலிகளை உருவாக்க முயல்கிறேன்.'],
+  ['why.5.tag', 'Modular Code • RBAC Security • Performance', 'மட்டுப்படுத்திய குறியீடு • பாதுகாப்பு • வேகத்திறன்'],
 
   // Process
   ['process.title', "How we'll work together", 'நாம் எவ்வாறு இணைந்து பணியாற்றுவோம்'],
