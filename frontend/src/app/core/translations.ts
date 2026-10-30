@@ -246,6 +246,18 @@ const ROWS: [string, string, string][] = [
   ['chat.floatingToggle', "Ask AI", "AI-யிடம் கேள்"],
   ['chat.clear', 'Clear chat', 'அரட்டையை அழி'],
   ['chat.minimize', 'Close', 'மூடு'],
+  ['chat.online', 'Online', 'ஆன்லைன்'],
+  ['chat.verified', 'Verified Portfolio Knowledge', 'சரிபார்க்கப்பட்ட போர்ட்ஃபோலியோ அறிவு'],
+  ['chat.q_exp_t', 'Work Experience', 'பணி அனுபவம்'],
+  ['chat.q_exp_s', 'TANSAM & DLF Photon roles', 'TANSAM & DLF Photon அனுபவங்கள்'],
+  ['chat.q_proj_t', 'Projects Built', 'உருவாக்கிய திட்டங்கள்'],
+  ['chat.q_proj_s', 'PCVA, DPH-LMS & AI Platform', 'PCVA, DPH-LMS & AI தளம்'],
+  ['chat.q_edu_t', 'Education & CGPA', 'கல்வி & மதிப்பெண்'],
+  ['chat.q_edu_s', 'B.Tech AI & Data Science (8.16)', 'B.Tech AI & Data Science (8.16)'],
+  ['chat.q_res_t', 'Download Resume', 'ரெஸ்யூம் பதிவிறக்கு'],
+  ['chat.q_res_s', 'Verified PDF with full details', 'முழு விவரங்களுடன் PDF'],
+  ['chat.copy', 'Copy', 'நகலெடு'],
+  ['chat.copied', 'Copied!', 'நகலெடுக்கப்பட்டது!'],
 
   // Swipe Stack Skills
   ['skills.swipe_hint', 'Swipe card or tap tabs to explore', 'கார்டை ஸ்வைப் செய்யவும் அல்லது திறன்களைத் தேர்ந்தெடுக்கவும்'],

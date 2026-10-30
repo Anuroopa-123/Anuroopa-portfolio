@@ -17,97 +17,189 @@ import { RevealDirective } from '../shared/interaction.directives';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormsModule, RevealDirective],
   template: `
-    <section id="ask-ai" class="section" aria-labelledby="chat-h">
+    <section id="ask-ai" class="ai-bot-section" aria-labelledby="chat-h">
       <div class="container">
-        <div class="section-head" appReveal>
+        <!-- Compact Section Header -->
+        <header class="section-head" appReveal>
           <div class="ai-badge">
             <span class="sparkle">✦</span>
-            {{ i18n.t('chat.badge') }}
+            <span>{{ i18n.t('chat.badge') }}</span>
           </div>
-          <h2 id="chat-h">{{ i18n.t('chat.title') }}</h2>
-          <p class="lede">{{ i18n.t('chat.sub') }}</p>
-        </div>
+          <h2 id="chat-h" class="section-title">{{ i18n.t('chat.title') }}</h2>
+          <p class="section-desc">{{ i18n.t('chat.sub') }}</p>
+        </header>
 
-        <div class="chat-card glass" appReveal>
-          <!-- Chat Header Bar -->
-          <div class="chat-header">
-            <div class="agent-info">
-              <div class="avatar-ring">
-                <span class="avatar-emoji">🤖</span>
-                <span class="status-indicator"></span>
+        <!-- Compact AI Copilot Card -->
+        <div class="copilot-card" appReveal>
+          <!-- Top Control Header -->
+          <div class="copilot-header">
+            <div class="agent-profile">
+              <div class="agent-avatar-wrap">
+                <div class="avatar-gradient">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+                  </svg>
+                </div>
+                <span class="online-status" [title]="i18n.t('chat.online')"></span>
               </div>
-              <div>
-                <h3 class="agent-name">Anuroopa's Portfolio AI</h3>
-                <span class="agent-tag">Dynamic OpenAI Engine • Portfolio Knowledge</span>
+              <div class="agent-meta">
+                <div class="agent-name-row">
+                  <h3 class="agent-name">Anuroopa AI</h3>
+                  <span class="live-pill">{{ i18n.t('chat.online') }}</span>
+                </div>
+                <span class="agent-subtitle">{{ i18n.t('chat.verified') }}</span>
               </div>
             </div>
 
-            <button
-              type="button"
-              class="clear-btn"
-              (click)="chat.reset()"
-              [title]="i18n.t('chat.clear')"
-              aria-label="Clear chat"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-              </svg>
-              {{ i18n.t('chat.clear') }}
-            </button>
+            <div class="header-actions">
+              <!-- Direct Resume Link -->
+              <a
+                href="/Anuroopa_PV_Resume.pdf"
+                download
+                class="icon-action-btn"
+                title="Download Resume PDF"
+                aria-label="Download Resume PDF"
+              >
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path>
+                </svg>
+              </a>
+
+              <!-- Clear Conversation -->
+              <button
+                type="button"
+                class="icon-action-btn"
+                (click)="chat.reset()"
+                [title]="i18n.t('chat.clear')"
+                [attr.aria-label]="i18n.t('chat.clear')"
+              >
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                </svg>
+              </button>
+            </div>
           </div>
 
-          <!-- Quick Suggestion Chips -->
-          <div class="suggestions-rail">
-            <span class="rail-label">Try asking:</span>
-            <div class="rail-chips">
-              @for (q of chat.suggested(); track q) {
+          <!-- Quick Action Prompt Grid (Shown when starting) -->
+          @if (chat.messages().length <= 1) {
+            <div class="quick-prompts-grid">
+              @for (card of quickCards; track card.query) {
                 <button
                   type="button"
-                  class="chip suggestion-chip"
-                  (click)="askSuggestion(q)"
+                  class="prompt-card"
+                  (click)="askSuggestion(card.query)"
                   [disabled]="chat.isLoading()"
                 >
-                  {{ q }}
+                  <div class="prompt-icon">
+                    @if (card.icon === 'briefcase') {
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                      </svg>
+                    } @else if (card.icon === 'rocket') {
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
+                        <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
+                      </svg>
+                    } @else if (card.icon === 'grad') {
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                        <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                      </svg>
+                    } @else {
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                      </svg>
+                    }
+                  </div>
+                  <div class="prompt-text">
+                    <span class="prompt-title">{{ i18n.t(card.titleKey) }}</span>
+                    <span class="prompt-sub">{{ i18n.t(card.subKey) }}</span>
+                  </div>
+                  <span class="prompt-arrow">→</span>
                 </button>
               }
             </div>
-          </div>
+          } @else {
+            <!-- Compact Suggestion Rail when in active chat -->
+            <div class="compact-rail">
+              <span class="rail-tag">Suggestions:</span>
+              <div class="rail-scroll">
+                @for (q of chat.suggested(); track q) {
+                  <button
+                    type="button"
+                    class="rail-pill"
+                    (click)="askSuggestion(q)"
+                    [disabled]="chat.isLoading()"
+                  >
+                    {{ q }}
+                  </button>
+                }
+              </div>
+            </div>
+          }
 
-          <!-- Messages Stream -->
-          <div #scrollContainer class="messages-stream">
-            @for (msg of chat.messages(); track $index) {
-              <div class="message-row" [class.user-row]="msg.role === 'user'">
+          <!-- Messages Feed -->
+          <div #scrollContainer class="chat-feed" [class.is-empty]="chat.messages().length <= 1">
+            @for (msg of chat.messages(); track $index; let idx = $index) {
+              <div class="feed-row" [class.is-user]="msg.role === 'user'">
                 @if (msg.role === 'assistant') {
-                  <div class="bubble-avatar">🤖</div>
+                  <div class="mini-bot-icon">✦</div>
                 }
-                <div class="bubble" [class.user-bubble]="msg.role === 'user'">
-                  <div class="bubble-content" [innerHTML]="formatMarkdown(msg.content)"></div>
+                <div class="msg-bubble" [class.is-user-bubble]="msg.role === 'user'">
+                  <div class="msg-content" [innerHTML]="formatMarkdown(msg.content)"></div>
+
+                  <!-- Quick Copy Button on Assistant Message -->
+                  @if (msg.role === 'assistant' && msg.content.length > 20) {
+                    <div class="msg-actions">
+                      <button
+                        type="button"
+                        class="copy-btn"
+                        (click)="copyMessage(msg.content, idx)"
+                        [title]="i18n.t('chat.copy')"
+                      >
+                        @if (copiedIndex() === idx) {
+                          <span class="copied-indicator">✓ {{ i18n.t('chat.copied') }}</span>
+                        } @else {
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                          </svg>
+                          <span>{{ i18n.t('chat.copy') }}</span>
+                        }
+                      </button>
+                    </div>
+                  }
                 </div>
-                @if (msg.role === 'user') {
-                  <div class="bubble-avatar user">👤</div>
-                }
               </div>
             }
 
+            <!-- Typing State -->
             @if (chat.isLoading()) {
-              <div class="message-row">
-                <div class="bubble-avatar">🤖</div>
-                <div class="bubble typing-bubble">
-                  <span class="dot-typing"></span>
-                  <span class="dot-typing"></span>
-                  <span class="dot-typing"></span>
-                  <span class="sr-only">{{ i18n.t('chat.thinking') }}</span>
+              <div class="feed-row">
+                <div class="mini-bot-icon">✦</div>
+                <div class="msg-bubble typing-bubble">
+                  <div class="typing-wave">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                  <span class="typing-text">{{ i18n.t('chat.thinking') }}</span>
                 </div>
               </div>
             }
           </div>
 
-          <!-- Input Controls -->
-          <form class="input-form" (ngSubmit)="onSubmit()">
-            <div class="input-wrap">
+          <!-- Modern Bottom Spotlight Input -->
+          <form class="input-bar" (ngSubmit)="onSubmit()">
+            <div class="input-capsule">
+              <span class="input-icon">✦</span>
               <input
                 type="text"
-                class="chat-input"
+                class="text-input"
                 name="userQuery"
                 [(ngModel)]="userQuery"
                 [placeholder]="i18n.t('chat.placeholder')"
@@ -116,369 +208,628 @@ import { RevealDirective } from '../shared/interaction.directives';
               />
               <button
                 type="submit"
-                class="send-btn"
+                class="send-action-btn"
                 [disabled]="!userQuery.trim() || chat.isLoading()"
                 [attr.aria-label]="i18n.t('chat.send')"
               >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <line x1="22" y1="2" x2="11" y2="13"></line>
                   <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                 </svg>
               </button>
             </div>
-            <p class="chat-footnote">
-              Connected dynamically to OpenAI. Answers are generated from Anuroopa's verified projects and skills.
-            </p>
+            <div class="input-meta">
+              <span>Dynamic OpenAI engine</span>
+              <span class="dot-sep">•</span>
+              <span>Verified from Resume & Portfolio</span>
+            </div>
           </form>
         </div>
       </div>
 
-      <!-- Floating Launcher Button for Quick Access from anywhere on page -->
-      <div class="floating-widget">
+      <!-- Quick Jump Floating Button in Corner -->
+      <div class="dock-launcher">
         <a
           href="#ask-ai"
-          class="floating-launcher"
+          class="dock-btn"
           title="Ask Anuroopa's AI"
-          aria-label="Scroll to AI assistant"
+          aria-label="Ask Anuroopa's AI"
         >
-          <span class="launcher-sparkle">✦</span>
-          <span class="launcher-text">{{ i18n.t('chat.floatingToggle') }}</span>
+          <span class="dock-sparkle">✦</span>
+          <span>{{ i18n.t('chat.floatingToggle') }}</span>
         </a>
       </div>
     </section>
   `,
   styles: `
-    h2 {
-      font-family: var(--f-display);
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      margin: 0;
-      line-height: 1.1;
+    .ai-bot-section {
+      padding: clamp(50px, 7vw, 90px) 0;
+      position: relative;
     }
+
+    /* Section Head */
+    .section-head {
+      text-align: center;
+      max-width: 660px;
+      margin: 0 auto clamp(24px, 4vw, 36px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
     .ai-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 7px;
       padding: 5px 14px;
       border-radius: 999px;
-      background: linear-gradient(135deg, rgba(153, 103, 255, 0.15) 0%, rgba(217, 119, 6, 0.15) 100%);
-      border: 1px solid rgba(153, 103, 255, 0.4);
-      color: var(--ink);
+      background: rgba(38, 56, 201, 0.08);
+      border: 1px solid rgba(38, 56, 201, 0.22);
+      color: var(--accent, #2638c9);
       font-weight: 800;
-      font-size: 0.8rem;
-      letter-spacing: 0.04em;
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-    .sparkle {
-      color: #9333ea;
-      animation: pulseSparkle 2s infinite ease-in-out;
-    }
-    @keyframes pulseSparkle {
-      0%, 100% { transform: scale(1); opacity: 0.8; }
-      50% { transform: scale(1.25); opacity: 1; }
     }
 
-    .chat-card {
-      border-radius: var(--r-lg);
-      padding: clamp(16px, 2.5vw, 28px);
-      box-shadow: 0 16px 36px -12px rgba(27, 26, 23, 0.1);
+    .sparkle {
+      color: #7e22ce;
+      animation: pulseSparkle 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseSparkle {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.3); opacity: 1; }
+    }
+
+    .section-title {
+      font-family: var(--f-display);
+      font-size: clamp(1.8rem, 3.8vw, 2.7rem);
+      line-height: 1.18;
+      margin: 0;
+      color: var(--ink, #101a52);
+    }
+
+    .section-desc {
+      color: var(--ink-2, #38437a);
+      font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+      font-weight: 500;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Main Copilot Card (Compact & Modern) */
+    .copilot-card {
+      max-width: 760px;
+      margin: 0 auto;
+      border-radius: 24px;
+      background: linear-gradient(155deg, rgba(255, 255, 255, 0.98) 0%, rgba(246, 249, 255, 0.94) 100%);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(38, 56, 201, 0.16);
+      box-shadow: 0 18px 45px -12px rgba(24, 36, 140, 0.14),
+                  0 0 1px 1px rgba(255, 255, 255, 0.9) inset;
+      padding: clamp(16px, 2.8vw, 24px);
       display: flex;
       flex-direction: column;
       gap: 16px;
-      max-width: 900px;
-      margin: 0 auto;
+      transition: box-shadow 0.3s ease;
     }
 
-    .chat-header {
+    /* Header Bar */
+    .copilot-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid var(--accent-line);
-      padding-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(38, 56, 201, 0.1);
     }
-    .agent-info {
+
+    .agent-profile {
       display: flex;
       align-items: center;
       gap: 12px;
     }
-    .avatar-ring {
+
+    .agent-avatar-wrap {
       position: relative;
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      background: #fff;
-      border: 1.5px solid var(--accent-line);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      width: 40px;
+      height: 40px;
     }
-    .status-indicator {
+
+    .avatar-gradient {
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #2563eb, #7e22ce);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+    }
+
+    .online-status {
       position: absolute;
-      bottom: -2px;
-      right: -2px;
-      width: 11px;
-      height: 11px;
+      bottom: -1px;
+      right: -1px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
       background: #10b981;
       border: 2px solid #fff;
+      box-shadow: 0 0 6px #10b981;
     }
+
+    .agent-meta {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .agent-name-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
     .agent-name {
       margin: 0;
       font-family: var(--f-display);
-      font-size: 1.15rem;
-      color: var(--ink);
-    }
-    .agent-tag {
-      font-size: 0.75rem;
-      color: var(--ink-3);
-      font-weight: 600;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--ink, #101a52);
     }
 
-    .clear-btn {
-      display: inline-flex;
+    .live-pill {
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 1px 7px;
+      border-radius: 999px;
+      background: #dcfce7;
+      color: #15803d;
+      border: 1px solid #86efac;
+    }
+
+    .agent-subtitle {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--ink-2, #38437a);
+    }
+
+    .header-actions {
+      display: flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--ink-3);
-      background: transparent;
-      border: 1px solid var(--accent-line);
-      padding: 6px 12px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .clear-btn:hover {
-      color: var(--accent);
-      border-color: var(--accent);
-      background: #fff;
     }
 
-    .suggestions-rail {
+    .icon-action-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      border: 1px solid rgba(38, 56, 201, 0.14);
+      background: #ffffff;
+      color: var(--ink-2, #38437a);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .icon-action-btn:hover {
+      background: var(--royal, #1f2fb0);
+      color: #ffffff;
+      border-color: transparent;
+      transform: translateY(-1px);
+    }
+
+    /* Quick Prompt Showcase (2x2 Grid) */
+    .quick-prompts-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 4px 0 8px;
+    }
+
+    .prompt-card {
       display: flex;
       align-items: center;
-      gap: 10px;
-      overflow-x: auto;
-      padding-bottom: 4px;
-    }
-    .rail-label {
-      font-size: 0.75rem;
-      font-weight: 800;
-      color: var(--ink-3);
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-    .rail-chips {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    .suggestion-chip {
+      gap: 12px;
+      padding: 10px 14px;
+      background: #ffffff;
+      border: 1px solid rgba(38, 56, 201, 0.12);
+      border-radius: 14px;
+      text-align: left;
       cursor: pointer;
-      background: #fff;
-      border: 1px solid var(--accent-line);
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--ink);
-      padding: 6px 14px;
-      border-radius: 999px;
-      white-space: nowrap;
-      transition: all 0.2s ease;
+      box-shadow: 0 2px 6px rgba(24, 36, 140, 0.04);
+      transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
-    .suggestion-chip:hover:not(:disabled) {
-      border-color: var(--accent);
-      color: var(--accent);
+
+    .prompt-card:hover:not(:disabled) {
+      border-color: var(--accent, #2638c9);
+      background: #f8faff;
       transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 6px 14px rgba(38, 56, 201, 0.08);
     }
 
-    .messages-stream {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      min-height: 280px;
-      max-height: 480px;
-      overflow-y: auto;
-      padding: 12px 6px;
-      scroll-behavior: smooth;
-    }
-    .message-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      max-width: 85%;
-      animation: fadeInRow 0.25s ease-out;
-    }
-    .message-row.user-row {
-      align-self: flex-end;
-      flex-direction: row;
-      justify-content: flex-end;
-    }
-    @keyframes fadeInRow {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
+    .prompt-card:hover .prompt-arrow {
+      transform: translateX(3px);
+      color: var(--accent, #2638c9);
     }
 
-    .bubble-avatar {
+    .prompt-icon {
       width: 32px;
       height: 32px;
       border-radius: 10px;
-      background: #fff;
-      border: 1px solid var(--accent-line);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.95rem;
+      background: rgba(38, 56, 201, 0.08);
+      color: var(--accent, #2638c9);
+      display: grid;
+      place-items: center;
       flex-shrink: 0;
     }
-    .bubble-avatar.user {
-      background: var(--ink);
-      color: #fff;
-      border-color: var(--ink);
+
+    .prompt-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
     }
 
-    .bubble {
+    .prompt-title {
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: var(--ink, #101a52);
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .prompt-sub {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--ink-2, #38437a);
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .prompt-arrow {
+      color: var(--ink-3, #566190);
+      font-size: 0.95rem;
+      font-weight: 700;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    /* Compact Rail for Ongoing Chat */
+    .compact-rail {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 2px;
+    }
+
+    .rail-tag {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--ink-3, #566190);
+      white-space: nowrap;
+    }
+
+    .rail-scroll {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .rail-scroll::-webkit-scrollbar { display: none; }
+
+    .rail-pill {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--ink, #101a52);
       background: #ffffff;
-      border: 1.5px solid var(--accent-line);
+      border: 1px solid rgba(38, 56, 201, 0.14);
+      padding: 4px 12px;
+      border-radius: 999px;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .rail-pill:hover:not(:disabled) {
+      background: var(--royal, #1f2fb0);
+      color: #ffffff;
+      border-color: transparent;
+      transform: translateY(-1px);
+    }
+
+    /* Message Feed */
+    .chat-feed {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 180px;
+      max-height: 380px;
+      overflow-y: auto;
+      padding: 4px 6px;
+      scroll-behavior: smooth;
+    }
+
+    .chat-feed.is-empty {
+      min-height: 100px;
+    }
+
+    .feed-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      max-width: 88%;
+      animation: fadeInMsg 0.2s ease-out;
+    }
+
+    .feed-row.is-user {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+    }
+
+    @keyframes fadeInMsg {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .mini-bot-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2563eb, #7e22ce);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 0.72rem;
+      flex-shrink: 0;
+      margin-top: 4px;
+      box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+    }
+
+    .msg-bubble {
+      background: #ffffff;
+      border: 1px solid rgba(38, 56, 201, 0.12);
       border-radius: 16px;
       border-top-left-radius: 4px;
-      padding: 14px 18px;
-      box-shadow: 0 4px 12px rgba(27, 26, 23, 0.04);
-      color: var(--ink);
-      font-size: 0.92rem;
-      line-height: 1.55;
+      padding: 10px 14px;
+      box-shadow: 0 2px 6px rgba(24, 36, 140, 0.04);
+      color: var(--ink, #101a52);
+      font-size: 0.9rem;
+      line-height: 1.5;
     }
-    .bubble.user-bubble {
-      background: var(--ink);
+
+    .msg-bubble.is-user-bubble {
+      background: linear-gradient(135deg, #1f2fb0, #141d86);
       color: #ffffff;
-      border-color: var(--ink);
+      border-color: #1f2fb0;
       border-top-left-radius: 16px;
       border-top-right-radius: 4px;
+      box-shadow: 0 4px 12px rgba(31, 47, 176, 0.22);
     }
-    .bubble-content {
+
+    .msg-content {
       word-break: break-word;
     }
-    .bubble-content ::ng-deep p { margin: 0 0 8px 0; }
-    .bubble-content ::ng-deep p:last-child { margin-bottom: 0; }
-    .bubble-content ::ng-deep strong { font-weight: 800; color: inherit; }
-    .bubble-content ::ng-deep ul { margin: 6px 0; padding-left: 18px; }
-    .bubble-content ::ng-deep li { margin-bottom: 4px; }
-    .bubble-content ::ng-deep a { color: var(--accent); text-decoration: underline; }
-    .bubble.user-bubble ::ng-deep a { color: #fef08a; }
 
+    .msg-content ::ng-deep p { margin: 0 0 6px 0; }
+    .msg-content ::ng-deep p:last-child { margin-bottom: 0; }
+    .msg-content ::ng-deep strong { font-weight: 800; color: inherit; }
+    .msg-content ::ng-deep ul { margin: 4px 0; padding-left: 18px; }
+    .msg-content ::ng-deep li { margin-bottom: 3px; }
+    .msg-content ::ng-deep a {
+      color: var(--accent, #2638c9);
+      font-weight: 700;
+      text-decoration: underline;
+    }
+    .msg-bubble.is-user-bubble ::ng-deep a {
+      color: #fef08a;
+    }
+
+    .msg-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 6px;
+      padding-top: 4px;
+      border-top: 1px solid rgba(38, 56, 201, 0.06);
+    }
+
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: transparent;
+      border: none;
+      color: var(--ink-3, #566190);
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 2px 6px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .copy-btn:hover {
+      color: var(--accent, #2638c9);
+      background: rgba(38, 56, 201, 0.06);
+    }
+
+    .copied-indicator {
+      color: #059669;
+      font-weight: 800;
+    }
+
+    /* Typing Animation */
     .typing-bubble {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 14px 20px;
-    }
-    .dot-typing {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--ink-3);
-      animation: blinkDots 1.4s infinite both;
-    }
-    .dot-typing:nth-child(2) { animation-delay: 0.2s; }
-    .dot-typing:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes blinkDots {
-      0%, 80%, 100% { transform: scale(0.6); opacity: 0.3; }
-      40% { transform: scale(1.1); opacity: 1; }
+      gap: 10px;
+      padding: 10px 14px;
     }
 
-    .input-form {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .input-wrap {
+    .typing-wave {
       display: flex;
       align-items: center;
-      gap: 8px;
-      background: #fff;
-      border: 1.5px solid var(--accent-line);
+      gap: 4px;
+    }
+
+    .typing-wave span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--royal, #1f2fb0);
+      animation: waveDots 1.4s infinite ease-in-out both;
+    }
+
+    .typing-wave span:nth-child(1) { animation-delay: -0.32s; }
+    .typing-wave span:nth-child(2) { animation-delay: -0.16s; }
+
+    @keyframes waveDots {
+      0%, 80%, 100% { transform: scale(0.6); opacity: 0.35; }
+      40% { transform: scale(1.15); opacity: 1; }
+    }
+
+    .typing-text {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--ink-2, #38437a);
+    }
+
+    /* Bottom Spotlight Input */
+    .input-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .input-capsule {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #ffffff;
+      border: 1.5px solid rgba(38, 56, 201, 0.18);
       border-radius: 999px;
-      padding: 4px 6px 4px 18px;
+      padding: 4px 6px 4px 16px;
+      box-shadow: 0 4px 12px rgba(24, 36, 140, 0.05);
       transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .input-wrap:focus-within {
-      border-color: var(--ink);
-      box-shadow: 0 0 0 3px rgba(27, 26, 23, 0.08);
+
+    .input-capsule:focus-within {
+      border-color: var(--royal, #1f2fb0);
+      box-shadow: 0 0 0 3px rgba(31, 47, 176, 0.12);
     }
-    .chat-input {
+
+    .input-icon {
+      color: #7e22ce;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .text-input {
       flex: 1;
       border: none;
       background: transparent;
-      font-size: 0.94rem;
-      color: var(--ink);
+      font-size: 0.92rem;
+      color: var(--ink, #101a52);
       outline: none;
       font-family: inherit;
+      font-weight: 500;
     }
-    .chat-input::placeholder {
-      color: var(--ink-3);
+
+    .text-input::placeholder {
+      color: var(--ink-3, #566190);
     }
-    .send-btn {
-      width: 42px;
-      height: 42px;
+
+    .send-action-btn {
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       border: none;
-      background: var(--ink);
+      background: var(--royal, #1f2fb0);
       color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: grid;
+      place-items: center;
       cursor: pointer;
       transition: all 0.2s ease;
       flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(31, 47, 176, 0.25);
     }
-    .send-btn:hover:not(:disabled) {
-      background: var(--accent);
-      transform: scale(1.05);
+
+    .send-action-btn:hover:not(:disabled) {
+      background: var(--accent, #2638c9);
+      transform: scale(1.06);
     }
-    .send-btn:disabled {
+
+    .send-action-btn:disabled {
       opacity: 0.4;
       cursor: not-allowed;
+      box-shadow: none;
     }
 
-    .chat-footnote {
-      margin: 0;
-      font-size: 0.74rem;
-      color: var(--ink-3);
-      text-align: center;
+    .input-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--ink-3, #566190);
     }
 
-    /* Floating Launcher */
-    .floating-widget {
+    .dot-sep {
+      opacity: 0.5;
+    }
+
+    /* Floating Dock Launcher */
+    .dock-launcher {
       position: fixed;
       bottom: 24px;
       right: 24px;
       z-index: 90;
     }
-    .floating-launcher {
+
+    .dock-btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 18px;
+      padding: 9px 16px;
       border-radius: 999px;
-      background: var(--ink);
-      color: #fff;
+      background: var(--royal, #1f2fb0);
+      color: #ffffff;
       font-weight: 800;
-      font-size: 0.88rem;
+      font-size: 0.84rem;
       text-decoration: none;
-      box-shadow: 0 10px 24px -4px rgba(27, 26, 23, 0.35);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 10px 24px -4px rgba(31, 47, 176, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.25);
       transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-    .floating-launcher:hover {
-      background: var(--accent);
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 14px 28px -4px rgba(184, 51, 42, 0.4);
+
+    .dock-btn:hover {
+      background: var(--accent, #2638c9);
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 14px 28px -4px rgba(31, 47, 176, 0.5);
     }
-    .launcher-sparkle {
-      color: #fef08a;
+
+    .dock-sparkle {
+      color: var(--turmeric, #ffbf1f);
       animation: pulseSparkle 2s infinite ease-in-out;
+    }
+
+    @media (max-width: 680px) {
+      .quick-prompts-grid {
+        grid-template-columns: 1fr;
+      }
+      .dock-launcher {
+        bottom: 16px;
+        right: 16px;
+      }
     }
   `,
 })
@@ -489,6 +840,34 @@ export class AiBotSection {
   @ViewChild('scrollContainer') private scrollContainer?: ElementRef<HTMLDivElement>;
 
   userQuery = '';
+  readonly copiedIndex = signal<number | null>(null);
+
+  readonly quickCards = [
+    {
+      icon: 'briefcase',
+      titleKey: 'chat.q_exp_t',
+      subKey: 'chat.q_exp_s',
+      query: 'What work experience does Anuroopa have?',
+    },
+    {
+      icon: 'rocket',
+      titleKey: 'chat.q_proj_t',
+      subKey: 'chat.q_proj_s',
+      query: 'What projects has she done?',
+    },
+    {
+      icon: 'grad',
+      titleKey: 'chat.q_edu_t',
+      subKey: 'chat.q_edu_s',
+      query: 'What is her educational background & CGPA?',
+    },
+    {
+      icon: 'doc',
+      titleKey: 'chat.q_res_t',
+      subKey: 'chat.q_res_s',
+      query: 'How can I download her resume?',
+    },
+  ];
 
   onSubmit(): void {
     const text = this.userQuery.trim();
@@ -501,6 +880,16 @@ export class AiBotSection {
   askSuggestion(q: string): void {
     this.chat.send(q);
     this.scrollToBottom();
+  }
+
+  copyMessage(text: string, index: number): void {
+    if (navigator?.clipboard) {
+      // Strip markdown asterisks and tags for clean copy text
+      const clean = text.replace(/[*_#`]/g, '');
+      navigator.clipboard.writeText(clean);
+      this.copiedIndex.set(index);
+      setTimeout(() => this.copiedIndex.set(null), 2000);
+    }
   }
 
   formatMarkdown(text: string): string {
